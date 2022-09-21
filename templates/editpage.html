@@ -1,0 +1,107 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <head>   
+    <style>
+        body{
+            background-color: #a4f5b1;
+        }
+        *{box-sizing: border-box;
+        }
+        h1{
+            text-align: center;
+        }
+
+        label{
+          padding: 12px 12px 12px 0;
+          display: inline-block;
+          width:10%;
+        }
+        .container{
+            padding-left: 500px;
+        }
+        input[type=text], input[type=email], input[type=number], input[type=select], input[type=date],input[type=select]
+{
+    width: 40%;
+    padding: 8px;
+    border: 1px solid rgb(168, 166, 166);
+    border-radius: 4px;
+    resize: vertical;
+}
+.btn{
+    margin-left:200px ;
+    background-color: yellow;
+    padding:6px;
+    width: 100px;
+
+}
+.select1{
+    width:40%;
+    padding: 8px;
+}
+
+    
+    </style>
+    <title>studentDetails</title>
+</head>
+<body>
+    <h1 style="font-family: cursive;">Edit Student Details</h1><br>
+    
+
+    <div class="container" >
+        <form class="demo"  method="post" action="/edit_student_details/{{ students.id }}">
+
+            {% csrf_token %}
+
+            <div class="row">
+                  <label class="col-sm-2 ">Name</label>
+                  <input  type="text" name="name" value="{{ students.name }}">
+            </div>  <br> 
+     
+            
+
+            <div class="row">
+                  <label class="col-sm-2">Age</label>
+                  <input type="number" name="age" value="{{ students.age }}">
+            </div><br>
+
+            <div class=" row">
+                <label class="col-sm-2">Address</label>
+                <input type="text" name="address" value="{{ students.address }}">
+            </div><br>
+            
+            <div class="row">
+                <label class="col-sm-2">Email</label>
+                <input type="email" name="email" value="{{ students.email }}">
+            </div><br>
+
+            <div >
+                <label for='education' class="col-sm-2">Qualification</label>
+                <select  class="select1" name="qualification">
+                    <option value="{{ students.qualification }}" Select Education>{{ students.qualification }}</option>
+                   
+                    <option value="btech">Btech</option>
+                    <option value="bca">BCA</option>
+                    <option value="bcom">Bcom</option>
+                    <option value="ba">BA</option>
+                </select> 
+                  
+                    
+            </div><br>
+
+            <div >
+               <label class="col-sm-2">Gender</label>
+               <input type="text" name="gender" value="{{ students.gender }}">
+                
+            </div><br>
+
+            <br>
+            <div>
+            <button class="btn" type="submit" style="background-color:green;" >Update</button>
+           
+           </div>
+        </form>
+    </div> 
+    {% endblock %}
+</body>
+</html>
